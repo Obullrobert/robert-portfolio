@@ -1,0 +1,269 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Robert Obull</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one left-aligned editorial column. Projects run as a ledger of rows, status on the left, detail on the right. */
+:root {
+  --bg: #F2F5F2;
+  --surface: #FFFFFF;
+  --ink: #14201A;
+  --muted: #55645B;
+  --line: #D3DBD5;
+  --accent: #17703F;
+  --accent-ink: #FFFFFF;
+  --soft: #E3EDE6;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1411; --surface: #151D18; --ink: #E7EEE9; --muted: #9BAAA0;
+    --line: #27332C; --accent: #4CC08A; --accent-ink: #0E1411; --soft: #1B2820;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1411; --surface: #151D18; --ink: #E7EEE9; --muted: #9BAAA0;
+  --line: #27332C; --accent: #4CC08A; --accent-ink: #0E1411; --soft: #1B2820;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.6 var(--body);
+  padding-block: 28px 56px;
+  padding-inline: 20px;
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.top {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.top strong { color: var(--ink); font-weight: 500; }
+
+.hero { padding-block: 64px 56px; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; }
+h1 {
+  font-family: var(--display); font-weight: 700; letter-spacing: -0.025em; line-height: 1.04;
+  font-size: clamp(2.3rem, 6.4vw, 4.2rem); margin: 18px 0 22px; max-width: 16ch; text-wrap: balance;
+}
+.lead { font-size: 1.15rem; max-width: 58ch; color: var(--muted); margin: 0 0 28px; }
+.lead b { color: var(--ink); font-weight: 500; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; font: 500 15px/1 var(--body); text-decoration: none;
+  padding: 13px 18px; border-radius: 3px; border: 1px solid var(--accent);
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { color: var(--accent); background: transparent; }
+
+h2 {
+  font-family: var(--mono); font-weight: 500; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 8px;
+}
+section { padding-block: 40px; }
+
+.row {
+  display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 10px 36px;
+  padding-block: 30px; border-top: 1px solid var(--line);
+}
+.row:last-child { border-bottom: 1px solid var(--line); }
+.meta { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+  border: 1px solid var(--line); padding: 4px 9px; border-radius: 3px; background: var(--surface);
+}
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.pill.hollow i { background: transparent; border: 1.5px solid var(--muted); }
+.kind { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+h3 {
+  font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.01em;
+  line-height: 1.2; margin: 0 0 8px;
+}
+.row p { margin: 0 0 14px; max-width: 62ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.tags li {
+  font-family: var(--mono); font-size: 12.5px; background: var(--soft); color: var(--ink);
+  padding: 3px 8px; border-radius: 3px;
+}
+.pieces {
+  margin: 4px 0 16px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 4px; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 18px;
+  font-family: var(--mono); font-size: 13px;
+}
+.pieces dt { color: var(--accent); font-weight: 500; }
+.pieces dd { margin: 0; color: var(--muted); }
+
+.stack { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 0 36px; margin: 0; }
+.stack dt, .stack dd { padding-block: 14px; border-top: 1px solid var(--line); margin: 0; }
+.stack dt { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.stack dd:last-of-type, .stack dt:last-of-type { border-bottom: 1px solid var(--line); }
+
+.about { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 10px 36px; }
+.about p { margin: 0 0 14px; max-width: 62ch; }
+.edu { font-family: var(--mono); font-size: 13.5px; color: var(--muted); }
+.edu b { color: var(--ink); font-weight: 500; }
+
+.contact { display: grid; gap: 12px; max-width: 520px; }
+.line {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px;
+}
+.line span { font-family: var(--mono); font-size: 14px; overflow-wrap: anywhere; min-width: 0; }
+.copy {
+  font: 500 13px/1 var(--body); color: var(--accent); background: transparent;
+  border: 1px solid var(--line); border-radius: 3px; padding: 8px 12px; cursor: pointer;
+}
+.copy:hover { border-color: var(--accent); }
+
+footer {
+  margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+@media (max-width: 680px) {
+  .hero { padding-block: 44px 36px; }
+  .row, .about { grid-template-columns: minmax(0, 1fr); }
+  .meta { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .stack { grid-template-columns: minmax(0, 1fr); }
+  .stack dt { border-bottom: 0; padding-bottom: 0; }
+  .stack dd { border-top: 0; padding-top: 4px; }
+  .stack dt { border-top: 1px solid var(--line); }
+  .pieces { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .pieces dd { margin-bottom: 10px; }
+}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <strong>Robert Obull</strong>
+    <span>ByteForge Labs · Kenya</span>
+  </div>
+
+  <header class="hero">
+    <span class="status"><i class="dot"></i>Open to work and client projects</span>
+    <h1>I build software Kenyan businesses run on.</h1>
+    <p class="lead">I'm a developer and third-year Information Systems student. I work solo, from the database to the M-Pesa payment prompt, on <b>point-of-sale, billing and mobile products</b> for small businesses and everyday customers.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="#work">See the work</a>
+    </div>
+  </header>
+
+  <section id="work" style="padding-top:0">
+    <h2>Selected work</h2>
+
+    <article class="row">
+      <div class="meta">
+        <span class="pill"><i></i>Backend built</span>
+        <span class="kind">Client project</span>
+      </div>
+      <div>
+        <h3>Supermarket point of sale</h3>
+        <p>A multi-branch POS for a supermarket with two checkout terminals. Stock is tracked per branch, so a second shop can be added without redesigning anything.</p>
+        <dl class="pieces">
+          <dt>sale.create</dt><dd>stock is deducted in one atomic step, so a sale never half-completes</dd>
+          <dt>stk_push</dt><dd>M-Pesa prompt sent to the customer's phone through Daraja</dd>
+          <dt>callback</dt><dd>payment confirmation received from Safaricom</dd>
+          <dt>report.daily</dt><dd>daily totals cut on Nairobi time, not server time</dd>
+        </dl>
+        <ul class="tags"><li>Django</li><li>Django REST Framework</li><li>PostgreSQL</li><li>M-Pesa Daraja</li></ul>
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="meta">
+        <span class="pill"><i></i>Deployed, testing</span>
+        <span class="kind">Client project</span>
+      </div>
+      <div>
+        <h3>WiFi hotspot billing</h3>
+        <p>A billing system for a WiFi business where customers pay by M-Pesa to get online. I rebranded it for the client and deployed it on PythonAnywhere. The payment prompt and callback work end to end in the sandbox. Syncing paid users to the MikroTik router is the part I'm finishing.</p>
+        <ul class="tags"><li>Python</li><li>Django</li><li>M-Pesa STK Push</li><li>MikroTik</li><li>PythonAnywhere</li></ul>
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="meta">
+        <span class="pill hollow"><i></i>Design stage</span>
+        <span class="kind">Own product</span>
+      </div>
+      <div>
+        <h3>MALEBO</h3>
+        <p>An Android dating app, launching in Kenya first. Planned around swipe and match, real-time chat, voice and video calls, live streaming and virtual gifts bought with coins through M-Pesa and Flutterwave.</p>
+        <ul class="tags"><li>Flutter</li><li>Firebase</li><li>M-Pesa</li><li>Flutterwave</li></ul>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <dl class="stack">
+      <dt>Languages</dt><dd>Python, C++, Dart, SQL</dd>
+      <dt>Backend</dt><dd>Django, Django REST Framework, PostgreSQL</dd>
+      <dt>Mobile</dt><dd>Flutter, Firebase</dd>
+      <dt>Payments</dt><dd>M-Pesa Daraja (STK Push, callbacks), Flutterwave</dd>
+      <dt>Hosting</dt><dd>PythonAnywhere, ngrok for local callback testing</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <div class="about">
+      <div class="edu"><b>Maseno University</b><br>BSc Information Systems<br>Year 3 of 4</div>
+      <div>
+        <p>I started in C++ and picked up Python and Django by building real systems, which is still how I learn. Each project above came with a real constraint: a till that cannot lose a sale, a callback that has to reach a server behind a tunnel, a hotspot router that has to agree with the billing database.</p>
+        <p>I run ByteForge Labs, which takes on client projects and builds its own products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <div class="line"><span id="em">obullrobert45@gmail.com</span><button class="copy" type="button" data-copy="obullrobert45@gmail.com" data-target="em">Copy</button></div>
+      <div class="line"><span id="ph">+254 792 956 935</span><button class="copy" type="button" data-copy="+254792956935" data-target="ph">Copy</button></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Building Solutions, Forging the Future</span>
+    <span>ByteForge Labs</span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var done = function (label) { b.textContent = label; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
+    var fallback = function () {
+      try {
+        var el = document.getElementById(b.getAttribute('data-target'));
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      } catch (e) {}
+      done('Selected');
+    };
+    try {
+      navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function () { done('Copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body></html>
